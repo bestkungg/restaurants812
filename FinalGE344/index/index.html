@@ -1,0 +1,263 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tour</title>
+</head>
+<body>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin="" />
+
+<!-- W3 CSS template -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+<style>
+  #mapid {
+    height: 800px;
+  }
+</style>
+
+<!-- สร้างตารางเพื่อนำข้อมูลไว้ฝั่งซ้ายมือ -->
+<div class="w3-row">
+  <div id="mapid" class="w3-half"></div>
+  <div id="content" class="w3-half">
+    <table class="w3-table w3-striped">
+      <tr>
+        <th>ชื่อแหล่งท่องเที่ยว</th>
+        <th>ประเภท</th>
+        <th>ระดับ</th>
+      </tr>
+      <tr>
+        <td>น้ำตก A</td>
+        <td>ธรรมชาติ</td>
+        <td>A</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<script>
+  let map = L.map("mapid").setView([13.731185110871198, 100.4504554711641], 8);
+
+  let osm = L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  ).addTo(map);
+  let gsat = L.tileLayer(
+    "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+  ).addTo(map);
+
+  let baseMaps = {
+    OSM: osm,
+    GoogleSat: gsat,
+  };
+
+  let tour = {
+    "type": "Feature",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "ครัวอัปษร",
+          "type": "Natural",
+          "level": Math.floor(Math.random() * 11),
+        },
+        "geometry": {
+          "coordinates": [
+            100.4504554711641,
+            13.731185110871198
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "เรือนมัลลิการ์",
+          "type": "Natural",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.56317904081256,
+            13.72570154784245
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "เมธาวลัย ศรแดง",
+          "type": "Natural",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.50204698465646,
+            13.756363106206079
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "บ้านขนิษฐา",
+          "type": "Natural",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.53642331349235,
+            13.72331845121303
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "อรรถรส",
+          "type": "Natural",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.57165634671247,
+            13.737658998638597
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "ลูกไก่ทอง",
+          "type": "Special",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.51013222883647,
+            13.726346448522524
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "กินอยู่ได้",
+          "type": "Special",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.53133524417944,
+            13.781025519834223
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "พระยา ไดนิ่ง",
+          "type": "Culture",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.49351260000002,
+            13.766212236995564
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "เขียวไข่กา",
+          "type": "Culture",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.60663245643069,
+            13.800515898266688
+          ],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "ราก",
+          "type": "Culture",
+          "level": Math.floor(Math.random() * 11)
+        },
+        "geometry": {
+          "coordinates": [
+            100.54398885581777,
+            13.680145711917193
+          ],
+          "type": "Point"
+        }
+      }
+    ]
+  }
+
+
+  let tourLayer = L.geoJSON(tour, {
+    pointToLayer: function (feature, latlng) {
+      return L.marker(latlng).bindPopup(feature.properties.name);
+    },
+    onEachFeature: function (feature, layer) {
+      layer.on("mouseover", function () {
+        document
+        .getElementById(feature.properties.name)
+        .classList.add("w3-red");
+      });
+
+      layer.on("mouseout", function () {
+        document
+        .getElementById(feature.properties.name)
+        .classList.remove("w3-red");
+      });
+    },
+  }).addTo(map);
+
+  let content = `
+    <table class='w3-table w3-striped'>
+      <tr>
+        <th>ชื่อแหล่งท่องเที่ยว</th>
+        <th>ประเภท</th>
+        <th>ระดับ</th>
+      </tr>
+  `;
+
+  for (let i in tour.features) {
+    content += `<tr id=` + tour.features[i].properties.name + `>
+      <td>` + tour.features[i].properties.name + `</td>
+      <td>` + tour.features[i].properties.type + `</td>
+      <td>` + tour.features[i].properties.level + `</td>
+      </tr>
+    `;
+  }
+  content += "</table>";
+  document.getElementById("content").innerHTML = content;
+
+  let overlays = {สถานที่ท่องเที่ยว: tourLayer};
+  //add leyer control
+  L.control.layers(baseMaps, overlays).addTo(map); //ชั้นข้อมูล
+</script>
+
+
+
+</body>
+</html>
